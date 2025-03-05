@@ -1,12 +1,14 @@
 import { Button, Card, Form, Input, Typography } from "antd";
 import { LoginImage } from "../../assets/login";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const { Title } = Typography;
 
 const Login = () => {
-    const onFinish = (values: { email: string; password: string }) => {
-        console.log("Login values:", values);
+    const navigate = useNavigate();
+    const onFinish = (values: { phone: number; password: string }) => {
+        
+        navigate('/home');
     };
 
     return (
@@ -18,7 +20,7 @@ const Login = () => {
         }}>
 
             <div style={{
-               
+
             }}>
                 <Typography style={{
                     fontWeight: 700,
@@ -28,15 +30,15 @@ const Login = () => {
                     color: '#1e6eeb'
                 }}> Mijozlar  </Typography>
                 <Typography style={{
-                    marginLeft:'auto',
-                    marginRight:'auto',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
                     maxWidth: 345,
                     fontWeight: 700,
                     fontSize: 28,
                     lineHeight: '143%',
                     textAlign: 'center',
                     color: '#060406',
-                    marginBottom:64,
+                    marginBottom: 64,
                 }}> Ishingizni samaraliroq boshqaring  </Typography>
                 <LoginImage />
             </div>
@@ -59,9 +61,9 @@ const Login = () => {
                         <Form.Item
                             label="Telefon raqamingizni kiriting"
                             name="number"
-                            rules={[{ required: true, }]}
+                            rules={[{ required: true,  }]}
                         >
-                            <Input placeholder="" />
+                            <Input/>
                         </Form.Item>
 
                         <Form.Item
@@ -71,7 +73,20 @@ const Login = () => {
                         >
                             <Input.Password placeholder="" />
                         </Form.Item>
-
+                        <div style={{
+                            textAlign: 'end',
+                            marginBottom: 77,
+                        }}>
+                            <Link style={{
+                                fontWeight: 600,
+                                textDecoration: 'underline',
+                                textDecorationSkipInk: 'none',
+                                color: '#1e6eeb',
+                            }}
+                                to={{ pathname: '/sign-in' }}>
+                                Parolni unutdinggizmi?
+                            </Link>
+                        </div>
 
                         <Form.Item>
                             <Button type="primary" htmlType="submit" block>
