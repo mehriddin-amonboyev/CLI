@@ -1,9 +1,21 @@
+import { Route, Routes } from "react-router-dom"
+import { MainLayout } from "./layouts/mainLayout"
+import routes from "./router/routes"
+
 function App() {
 
   return (
-    <div>
-      <samp></samp>
-    </div>
+    <Routes>
+      <Route path='/' element={<MainLayout />}>
+        {routes.map(({ comp: Page, path }) => (
+          <Route
+            index={!path ? true : false}
+            path={path}
+            element={<Page />}
+          />
+        ))}
+      </Route>
+    </Routes>
   )
 }
 
