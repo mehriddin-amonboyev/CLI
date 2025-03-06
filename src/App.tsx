@@ -7,10 +7,11 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path='/' element={<MainLayout />}>
-        {routes.map(({ comp: Page, path }) => (
+      <Route path="/" element={<Login />} />
+      <Route path='/home' element={<MainLayout />}>
+        {routes.map(({ comp: Page, path }, index) => (
           <Route
+            key={index}
             index={!path ? true : false}
             path={path}
             element={<Page />}

@@ -8,7 +8,7 @@ export function loadState(key: string) {
   }
 }
 
-export function saveState(key: string, state: string) {
+export function saveState(key: any, state: any) {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem(key, serializedState);

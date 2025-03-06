@@ -1,33 +1,33 @@
-// import {
-//   UploadOutlined,
-//   UserOutlined,
-//   VideoCameraOutlined,
-// } from "@ant-design/icons";
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
 
 export const items = [
   {
     path: "/",
     title: "Home",
-    // icon: UserOutlined,
+    icon: UserOutlined,
   },
   {
-    path: "/products",
+    path: "/",
     title: "Products",
-    // icon: UploadOutlined,
-    children: [
-      {
-        path: "/create-products",
-        title: "Create product",
-      },
-      {
-        path: "/edit-products",
-        title: "Edit product",
-      },
-    ],
+    icon: UploadOutlined,
+    // children: [
+    //   // {
+    //   //   path: "/",
+    //   //   title: "Create product",
+    //   // },
+    //   // {
+    //   //   path: "/",
+    //   //   title: "Edit product",
+    //   // },
+    // ],
   },
   {
-    path: "/categoryes",
+    path: "/",
     title: "Categoryes",
-    // icon: VideoCameraOutlined,
+    icon: VideoCameraOutlined,
   },
 ];
