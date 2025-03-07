@@ -24,28 +24,28 @@ export const items = [
     path: "/app/deptors",
     icon: BarChartOutlined,
   },
-  {
-    label: "User",
-    path: "sub1",
-    icon: UserOutlined,
-    children: [
-      { label: "Tom", path: "/user/tom" },
-      { label: "Bill", path: "/user/bill" },
-      { label: "Alex", path: "/user/alex" },
-    ],
-  },
-  {
-    label: "Team",
-    path: "sub2",
-    icon: TeamOutlined,
-    children: [
-      { label: "Team 1", path: "/team/1" },
-      { label: "Team 2", path: "/team/2" },
-    ],
-  },
+  // {
+  //   label: "User",
+  //   path: "sub1",
+  //   icon: UserOutlined,
+  //   children: [
+  //     { label: "Tom", path: "/user/tom" },
+  //     { label: "Bill", path: "/user/bill" },
+  //     { label: "Alex", path: "/user/alex" },
+  //   ],
+  // },
+  // {
+  //   label: "Team",
+  //   path: "sub2",
+  //   icon: TeamOutlined,
+  //   children: [
+  //     { label: "Team 1", path: "/team/1" },
+  //     { label: "Team 2", path: "/team/2" },
+  //   ],
+  // },
   {
     label: "Files",
-    path: "/files",
+    path: "/app/create-debtor",
     icon: FileOutlined
   },
   {

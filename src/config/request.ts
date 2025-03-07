@@ -1,13 +1,16 @@
 import axios from "axios";
-import { loadState } from "./storage";
 
 export const request = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://localhost:3000/api/v1"
 });
 
-request.interceptors.request.use((config) => {
-  config.headers["Authorization"] = `Bearer ${loadState("user")?.accessToken}`;
-
-  return config;
-});
+request.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token")
+    if (token)
+      config.headers.Authorization = `Bearer ${token}`;
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 

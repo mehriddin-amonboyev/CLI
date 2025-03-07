@@ -9,11 +9,11 @@ const Login = () => {
     const navigate = useNavigate();
     const loginMutation = useLogin();
 
-    const onFinish = (values: { login: string; hashed_password: string }) => {
+    const onFinish = (values: { login: string; password: string }) => {
         loginMutation.mutate(values, {
             onSuccess: (data) => {
-                localStorage.setItem("user", JSON.stringify(data));
-                navigate('app/dashboard');
+                localStorage.setItem("token", JSON.stringify(data.data.access_token));
+                navigate('/app/dashboard');
             },
             onError: (error) => {
                 console.log("Login failed", error);
@@ -38,10 +38,10 @@ const Login = () => {
                         Xush kelibsiz
                     </Title>
                     <Form layout="vertical" onFinish={onFinish}>
-                        <Form.Item label="Telefon raqamingizni kiriting" name="login" rules={[{ required: true }]}>
+                        <Form.Item label="Username kiriting" name="login" rules={[{ required: true }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item label="Parol kiriting" name="hashed_password" rules={[{ required: true }]}>
+                        <Form.Item label="Parol kiriting" name="password" rules={[{ required: true }]}>
                             <Input.Password />
                         </Form.Item>
                         <div style={{ textAlign: 'end', marginBottom: 77 }}>

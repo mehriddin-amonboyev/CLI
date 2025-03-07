@@ -1,4 +1,4 @@
 export interface login {
     login: string;
-    hashed_password: string;
+    password: string;
 }

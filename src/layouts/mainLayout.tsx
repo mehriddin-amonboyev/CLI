@@ -9,12 +9,19 @@ import styles from './mainLayout.module.css'
 const { Content, Sider } = Layout;
 
 export const MainLayout: React.FC = () => {
+  const navigate = useNavigate();
+  React.useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(!token){
+      navigate("/login")
+    }
+  },[navigate]);
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const navigate = useNavigate();
 
   // Menu elementiga bosilganda ishlaydi
   const handleMenuClick = (e: { key: string }) => {
@@ -26,12 +33,12 @@ export const MainLayout: React.FC = () => {
       key: item.path,
       icon: React.createElement(item.icon),
       label: <Link to={`${item.path}`}>{item.label}</Link>,
-      children: item.children?.map((innerItem) => {
-        return {
-          key: innerItem.path,
-          label: <Link to={innerItem.path}>{innerItem.label}</Link>,
-        };
-      }),
+      // children: item.children?.map((innerItem) => {
+      //   return {
+      //     key: innerItem.path,
+      //     label: <Link to={innerItem.path}>{innerItem.label}</Link>,
+      //   };
+      // }),
     };
   });
 

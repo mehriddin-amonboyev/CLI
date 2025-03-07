@@ -7,7 +7,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path='/app' element={<MainLayout />}>
         {routes.map(({ comp: Page, path }, index) => (
           <Route
