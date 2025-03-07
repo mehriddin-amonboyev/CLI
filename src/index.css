@@ -1,5 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+body {
+    font-family: 'Nunito', 'Roboto', sans-serif;
+}
+
+:root {
+    --text: #263a5b;
+    --brand: #1e6eeb;
+    --brand-01: #4ba06c;
+    --secondary-01: #5564d7;
+    --secondary-02: #f1be5b;
+    --secondary-03: #64d26f;
+    --secondary-01: #e04b43;
+    --primary-01: #2d2d2d;
+    --primary-02: #fff;
+    --bg-grey: #f8f8f8;
+    --neutral-01: #36414f;
+    --neutral-02: #828fa2;
+    --neutral-03: #c0c7d0;
+    --neutral-04: #e2e8ed;
+    --neutral-05: #fff;
+}
+
+:root {
+    --font-family: "Nunito", sans-serif;
+    --second-family: "Roboto", sans-serif;
 }

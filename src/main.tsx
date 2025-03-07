@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={client}>
     <BrowserRouter>
       <App />
-    </BrowserRouter>,
+    </BrowserRouter>
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>
 )

@@ -1,0 +1,17 @@
+.sitelogo {
+    color: blue;
+    padding: 20px 68px 18px 32px;
+}
+
+.logo {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--brand);
+}
+
+.rectangle {
+    width: 250px;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.06);
+}

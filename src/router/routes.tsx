@@ -1,5 +1,6 @@
-import Login from "../pages/Auth/auth";
+
 import { Home } from "../pages/Home/home";
+import { Statistika } from "../pages/Statistic/statistic";
 
 export default[
     // {
@@ -7,7 +8,11 @@ export default[
     //     comp: Login,
     // },
     {
-        path:'/home',
+        path:'/app/dashboard',
         comp: Home,
+    },
+    {
+        path:'/app/statistic',
+        comp: Statistika,
     }
 ]

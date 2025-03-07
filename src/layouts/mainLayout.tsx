@@ -1,47 +1,71 @@
 import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu, theme } from "antd";
+import { items } from "./sider-router";
+import { HeaderLayout } from "./header/header";
+import { FooterLayout } from "./footer/footer";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { items } from "./layout-data";
-import { useSelector } from "react-redux";
+import { BreadcrumbComponent } from "./breadcrumbComponent";
+import styles from './mainLayout.module.css'
+const { Content, Sider } = Layout;
 
-const { Header, Sider, Content } = Layout;
-
-const menu = items.map((item, index) => ({
-  key: index.toString(),
-  label: <Link to={item.path}>{item.title}</Link>,
-}));
-
-export const MainLayout = () => {
+export const MainLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const navigate = useNavigate();
-  const token = useSelector((state) => state.auth.user?.token); // Redux dan token olish
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
 
-  React.useEffect(() => {
-    const localUser = localStorage.getItem("user");
-    if (!token && !localUser) {
-      navigate("/");
-    }
-  }, [token]);
+  const navigate = useNavigate();
+
+  // Menu elementiga bosilganda ishlaydi
+  const handleMenuClick = (e: { key: string }) => {
+    navigate(e.key);
+  };
+
+  const menu = items.map((item) => {
+    return {
+      key: item.path,
+      icon: React.createElement(item.icon),
+      label: <Link to={`${item.path}`}>{item.label}</Link>,
+      children: item.children?.map((innerItem) => {
+        return {
+          key: innerItem.path,
+          label: <Link to={innerItem.path}>{innerItem.label}</Link>,
+        };
+      }),
+    };
+  });
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={[menu[0]?.key]} items={menu} />
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <div className={styles.sitelogo}>
+          <Link to={'/app/dashboard'} className="logo">Savdo</Link>
+        </div>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={["/app/dashboard"]}
+          // mode="inline"
+          items={menu}
+          onClick={handleMenuClick}
+          style={{ paddingTop: 24}}
+        />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: "#e5e5e5" }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{ fontSize: "16px", width: 64, height: 64 }}
-          />
-        </Header>
-        <Content style={{ margin: "24px 16px", padding: 24, minHeight: 280, background: "#e5e5e5", borderRadius: "20px" }}>
-          <Outlet />
+        <HeaderLayout />
+        <Content style={{ margin: "0 16px" }}>
+          <BreadcrumbComponent />
+          <div
+            style={{
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+            }}
+          >
+            <Outlet />
+          </div>
         </Content>
+        <FooterLayout />
       </Layout>
     </Layout>
   );

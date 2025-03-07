@@ -1,7 +1,7 @@
 export const Home = () => {
     return (
         <>
-            Home
+            Home page dan kelyapti
         </>
     )
 }
