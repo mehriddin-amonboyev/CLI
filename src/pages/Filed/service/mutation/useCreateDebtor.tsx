@@ -2,7 +2,8 @@ import { useMutation } from "@tanstack/react-query"
 import { request } from "../../../../config/request"
 
 export const useCreateDebtor = () => {
-    const token =JSON.parse(localStorage.getItem('token') || '{}');
+    const token = JSON.parse(localStorage.getItem('token') || '{}');
+
     return useMutation({
         mutationFn: (data: {
             full_name: string,
