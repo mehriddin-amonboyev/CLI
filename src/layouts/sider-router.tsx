@@ -1,11 +1,10 @@
 import {
   BarChartOutlined,
-  FileOutlined,
   HomeOutlined,
   MessageFilled,
   SettingOutlined,
   TeamOutlined,
-  UserOutlined,
+  UserAddOutlined,
 } from "@ant-design/icons";
 
 export const items = [
@@ -20,9 +19,9 @@ export const items = [
     icon: BarChartOutlined,
   },
   {
-    label: "qarzdorlar",
-    path: "/app/deptors",
-    icon: BarChartOutlined,
+    label: "Qarzdorlar",
+    path: "/app/debtors",
+    icon: TeamOutlined,
   },
   // {
   //   label: "User",
@@ -44,9 +43,9 @@ export const items = [
   //   ],
   // },
   {
-    label: "Files",
+    label: "Qarzdor yaratish",
     path: "/app/create-debtor",
-    icon: FileOutlined
+    icon: UserAddOutlined
   },
   {
     label: "SMS xabarnoma",
