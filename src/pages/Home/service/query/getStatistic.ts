@@ -7,6 +7,6 @@ export const useGetStatistic = () => {
   return useQuery({
     queryKey: ["home-statistic"],
     queryFn: () =>
-      request.get<StoreStatistic>("/store/statistics").then((res) => res.data),
+      request.get<StoreStatistic>("/stores/statistics").then((res) => res.data),
   });
 };

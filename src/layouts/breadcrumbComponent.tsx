@@ -1,7 +1,7 @@
 import { Breadcrumb } from "antd";
 import { Link, useLocation } from "react-router-dom";
 
-export const BreadcrumbComponent: React.FC = () => {
+export const BreadcrumbComponent = () => {
   const location = useLocation(); 
 
   const pathSnippets = location.pathname.split("/").filter((item) => item);
@@ -18,7 +18,6 @@ export const BreadcrumbComponent: React.FC = () => {
 
   return (
     <Breadcrumb style={{ margin: "16px 0" }}>
-      
       {breadcrumbItems}
     </Breadcrumb>
   );

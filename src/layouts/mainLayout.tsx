@@ -6,22 +6,22 @@ import { FooterLayout } from "./footer/footer";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { BreadcrumbComponent } from "./breadcrumbComponent";
 import styles from './mainLayout.module.css'
+import { loadState } from "../config/storage";
 const { Content, Sider } = Layout;
 
-export const MainLayout: React.FC = () => {
+export const MainLayout = () => {
   const navigate = useNavigate();
-  React.useEffect(()=>{
-    const token = localStorage.getItem("token");
-    if(!token){
+  React.useEffect(() => {
+    const token = loadState("token");
+    if (!token) {
       navigate("/login")
     }
-  },[navigate]);
+  }, [navigate]);
 
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-
 
   // Menu elementiga bosilganda ishlaydi
   const handleMenuClick = (e: { key: string }) => {
@@ -51,10 +51,9 @@ export const MainLayout: React.FC = () => {
         <Menu
           theme="dark"
           defaultSelectedKeys={["/app/dashboard"]}
-          // mode="inline"
           items={menu}
           onClick={handleMenuClick}
-          style={{ paddingTop: 24}}
+          style={{ paddingTop: 24 }}
         />
       </Sider>
       <Layout>

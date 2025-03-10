@@ -2,17 +2,20 @@ import { Button, Card, Form, Input, Typography } from "antd";
 import { LoginImage } from "../../assets/login";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "./service/mutation/loginUser";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/authSlice";
 
 const { Title } = Typography;
 
 const Login = () => {
     const navigate = useNavigate();
     const loginMutation = useLogin();
+    const dispatch = useDispatch();
 
     const onFinish = (values: { login: string; password: string }) => {
         loginMutation.mutate(values, {
             onSuccess: (data) => {
-                localStorage.setItem("token", JSON.stringify(data.data.access_token));
+                dispatch(setUser({ token: data.data }));
                 navigate('/app/dashboard');
             },
             onError: (error) => {
