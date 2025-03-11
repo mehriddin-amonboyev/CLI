@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { request } from "../../../../config/request";
+import { useAppNotification } from "../../../../components/Modals/Notification/services/query/useNotification";
 
 const tokenData = JSON.parse(localStorage.getItem("token") || "{}");
 const accessToken = tokenData.token?.access_token;
 
 export const useDeleteDebtor = () => {
     const queryClient = useQueryClient();
-
+const notification = useAppNotification();
     return useMutation({
         mutationFn: async (id: string) => {
             return request
@@ -15,13 +16,15 @@ export const useDeleteDebtor = () => {
                 })
                 .then((res) => res.data)
                 .catch((error) => {
-                    console.error("🛑 O'chirishda xatolik:", error);
+                    notification.error({
+                        message:"O'chirishda xatolik:", 
+                        description: `${error.response?.data?.error?.message}`,
+                    });
                     throw error;
                 });
         },
 
         onSuccess: () => {
-            console.log("✅ Qarzdor muvaffaqiyatli o‘chirildi!");
             queryClient.invalidateQueries({ queryKey: ['debtors'] }); // ⚡️ Ro‘yxatni yangilash
         },
     });

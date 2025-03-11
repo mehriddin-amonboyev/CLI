@@ -1,7 +1,8 @@
-import { Button, Form, Input, notification } from "antd";
-import { UploadCard } from "./components/upload-card";
-import { UploadPassport } from "./components/upload-passport";
+import { Button, Form, Input } from "antd";
+// import { UploadCard } from "./components/upload-card";
+// import { UploadPassport } from "./components/upload-passport";
 import { useCreateDebtor } from "./service/mutation/useCreateDebtor";
+import { useAppNotification } from "../../components/Modals/Notification/services/query/useNotification";
 
 interface FormValues {
     id: string,
@@ -9,29 +10,22 @@ interface FormValues {
     address: string;
     description: string;
 }
-type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
-export const Filed = () => {
+export const CreateDebtor = () => {
     const createDebtorMutation = useCreateDebtor();
-    
-    const [api, contextHolder] = notification.useNotification();
 
-    const openNotificationWithIcon = (type: NotificationType) => {
-        api[type]({
-            message: "Muvaffaqiyatli qo'shildi",
-            description:
-                "Qarzdor muvaffaqiyatli qo'shildi",
-        });
-    };
-    
+    const notification = useAppNotification();
+
     const onFinish = (values: FormValues) => {
         const tokenData = JSON.parse(localStorage.getItem("token") || "{}");
         const store_id = tokenData.token?.store_id;
-        openNotificationWithIcon('success')
+        notification.success({
+            message: "Ajoyib",
+            description: " Debtor ro'yxatga qo'shildi"
+        })
         if (store_id) {
             createDebtorMutation.mutate({ ...values, store_id }, {
                 onSuccess: (data) => {
-
                     console.log("Successful:", data);
                 },
                 onError: (error) => {
@@ -45,7 +39,6 @@ export const Filed = () => {
 
     return (
         <>
-            {contextHolder}
             <Form layout="vertical" onFinish={onFinish} style={{ width: '50%' }}>
                 <Form.Item
                     label="Ism Familiya"
