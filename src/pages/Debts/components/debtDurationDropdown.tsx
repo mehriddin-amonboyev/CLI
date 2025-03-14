@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Dropdown, Row, Space, Typography } from "antd";
+import { Dropdown, Space } from "antd";
 
 const durations = [
     { key: "", label: "oyni tanlang" },

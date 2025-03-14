@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 import { items } from "./sider-router";
 import { HeaderLayout } from "./header/header";
 import { FooterLayout } from "./footer/footer";
@@ -7,6 +7,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { BreadcrumbComponent } from "./breadcrumbComponent";
 import styles from './mainLayout.module.css'
 import { loadState } from "../config/storage";
+import { UserAddOutlined } from "@ant-design/icons";
 const { Content, Sider } = Layout;
 
 export const MainLayout = () => {
@@ -32,13 +33,7 @@ export const MainLayout = () => {
     return {
       key: item.path,
       icon: React.createElement(item.icon),
-      label: <Link to={`${item.path}`}>{item.label}</Link>,
-      // children: item.children?.map((innerItem) => {
-      //   return {
-      //     key: innerItem.path,
-      //     label: <Link to={innerItem.path}>{innerItem.label}</Link>,
-      //   };
-      // }),
+      label: <Link to={`${item.path}`}>{item.label}</Link>
     };
   });
 

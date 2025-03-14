@@ -1,0 +1,47 @@
+.profile{
+    width: 70%;
+}
+
+.profile__debtor_balans{
+    width: 50%;
+    height: 100px;
+    background:  #30af49;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile__debtor{
+    padding-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.profile__late_payment{
+    width: 50%;
+    height: 127px;
+    border:1px solid #ececec;
+    border-radius: 16px;
+    padding: 16px;
+}
+.profile__debtor_count{
+    width: 50%;
+    height: 127px;
+    border:1px solid #ececec;
+    border-radius: 16px;
+    padding: 16px;
+}
+.profile__balans_block{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+.profile__balans{
+    display: flex;
+}
+.profile__balans_button{
+    /* padding: 0; */
+    border-radius: 18px;
+}

@@ -3,11 +3,10 @@ import { useAppNotification } from "../../components/Modals/Notification/service
 import DebtDurationDropdown from "./components/debtDurationDropdown";
 import { useCreateDebts } from "./services/mutation/useCreateDebts";
 import { useLocation } from "react-router-dom";
-
-
 const { Title } = Typography;
+
+
 interface FormValues {
-    debt_date: string,
     debt_period: number,
     debt_sum: number,
     description: string,
@@ -18,25 +17,33 @@ export const CreateDebts = () => {
     const notification = useAppNotification();
     const location = useLocation();
     const { debtor_id } = location.state || {}
+    let debt_date='';
     const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-        console.log(date, dateString);
+        
     };
     const onFinish = (values: FormValues) => {
-        notification.success({
-            message: "Ajoyib",
-            description: "Nasiya qo'shildi"
-        })
+        if (!debtor_id) {
+            console.log("debtor topilmadi")
+            return
+        }
         if (debtor_id) {
-            createDebtsMutation.mutate({ ...values, debtor_id }, {
+            createDebtsMutation.mutate({ ...values, debtor_id, debt_date}, {
+               
                 onSuccess: (data) => {
                     console.log("Successful:", data);
+                    notification.success({
+                        message: "Ajoyib",
+                        description: "Nasiya qo'shildi"
+                    })
                 },
                 onError: (error) => {
-                    console.log("Uploadda xatolik bor:", error.message);
+                    console.log("Uploadda xatolik bor:", error);
+                    console.log(values)
                 }
             });
         } else {
             console.error("debtor ID topilmadi!");
+
         }
     };
 
@@ -44,26 +51,19 @@ export const CreateDebts = () => {
         <>
             <Title level={2} style={{ paddingBottom: 9 }}>Nasiya Yaratish</Title>
             <Form layout="vertical" onFinish={onFinish} style={{ width: '50%' }}>
-                <Form.Item
-                    label="Mahsulot nomi"
-                    name="full_name"
-                    rules={[{ required: false, message: "Mahsulotning nomi" }]}
-                >
-                    <Input placeholder="mahsulot nomini kiriting" />
-                </Form.Item>
-
+                
                 <Form.Item
                     label="Sana"
                     name="debt_date"
                     rules={[{ required: false, message: "Sanani kiriting!" }]}
                 >
-                    <DatePicker onChange={onChange} style={{ width: 'full' }} />
+                    <DatePicker onChange={onChange}/>
                 </Form.Item>
 
                 <Form.Item
                     label="Muddat"
-                    name="debt_peroid"
-                    rules={[{ required: false }]}
+                    name="debt_period"
+                    rules={[{ required: true }]}
                 >
                     <DebtDurationDropdown />
                 </Form.Item>
@@ -72,7 +72,7 @@ export const CreateDebts = () => {
                     name="debt_sum"
                     rules={[{ required: false }]}
                 >
-                    <Input/>
+                    <Input />
                 </Form.Item>
                 <Form.Item
                     name="description"

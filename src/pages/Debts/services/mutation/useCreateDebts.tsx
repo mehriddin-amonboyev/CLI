@@ -6,7 +6,7 @@ export const useCreateDebts = () => {
 
     return useMutation({
         mutationFn: (data: {
-            debt_date: Date,
+            debt_date: string,
             debtor_id: string,
             debt_period: number,
             debt_sum: number,

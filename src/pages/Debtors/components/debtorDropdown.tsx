@@ -11,7 +11,6 @@ export const DebtorDrop = (record: any) => {
     const navigate = useNavigate();
     const notification = useAppNotification();
     const deleteDebtorMutation = useDeleteDebtor();
-    const createDebtsMutation = useCreateDebts();
 
     const handleDelete = () => {
         deleteDebtorMutation.mutate(record.record, {
@@ -22,7 +21,7 @@ export const DebtorDrop = (record: any) => {
         })
     }
     const createDebts = () => {
-        navigate(`create-debts/${record.record}`, { state: { id: record.record } });
+        navigate(`create-debts/${record.record}`, { state: { debtor_id: record.record } });
     }
 
 

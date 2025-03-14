@@ -1,4 +1,4 @@
-import { Avatar, Badge, Dropdown, Input, Layout, Menu, MenuProps } from "antd"
+import { Avatar, Badge, Dropdown, Input, Layout, Menu, MenuProps, Popover } from "antd"
 import { BellOutlined, GlobalOutlined, SearchOutlined, UserOutlined } from "@ant-design/icons"
 import style from './header.module.css'
 import { useNavigate } from "react-router-dom"
@@ -21,8 +21,11 @@ export const HeaderLayout = () => {
         localStorage.removeItem("token");
         navigate("/")
     }
+    const profile = () => {
+        navigate('/app/profile')
+    }
     const menuItems: MenuProps['items'] = [
-        { key: "profile", label: "Profil" },
+        { key: "profile", label: "Profil", onClick: profile },
         { key: "logout", label: "Chiqish", onClick: logout },
 
     ]
@@ -40,8 +43,13 @@ export const HeaderLayout = () => {
                 <Dropdown
                     menu={{ items: menuItems }}
                     placement="bottomRight"
+                    
                 >
-                    <Avatar size='small' icon={<UserOutlined />} />
+                    <Avatar 
+                    size='small' 
+                    icon={<UserOutlined />} 
+                    style={{cursor:'pointer'}}
+                    />
                 </Dropdown>
             </div>
         </Header>
