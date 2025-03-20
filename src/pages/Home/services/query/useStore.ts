@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { request } from "../../../../config/request";
 
-export const useProfile = () => {
+export const useStore = () => {
     const tokenData = JSON.parse(localStorage.getItem("token") || "{}");
     return useQuery({
-        queryKey: ["profile"],
+        queryKey: ["store"],
         queryFn: () =>
             request
                 .get(`/stores/${tokenData.token.store_id}`, {

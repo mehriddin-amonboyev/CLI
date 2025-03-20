@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { request } from "../../../../config/request";
 
-export const useProfile = () => {
+export const useLatePayment = () => {
     const tokenData = JSON.parse(localStorage.getItem("token") || "{}");
     return useQuery({
-        queryKey: ["profile"],
+        queryKey: ["late-payments"],
         queryFn: () =>
             request
-                .get(`/stores/${tokenData.token.store_id}`, {
+                .get(`/stores/late-payments`, {
                     headers: {
                         Authorization: `Bearer ${tokenData.token?.access_token}`
                     }

@@ -1,23 +1,16 @@
 import {
-  BarChartOutlined,
   HomeOutlined,
   MessageFilled,
   SettingOutlined,
   TeamOutlined,
-  UserAddOutlined,
 } from "@ant-design/icons";
 
 export const items = [
   {
     label: "Bosh sahifa",
-    path: "/app/dashboard",
+    path: "/app/home",
     icon: HomeOutlined,
   },
-  // {
-  //   label: "Statistika",
-  //   path: "/app/statistic",
-  //   icon: BarChartOutlined,
-  // },
   {
     label: "Qarzdorlar",
     path: "/app/debtors",

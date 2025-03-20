@@ -16,7 +16,7 @@ const Login = () => {
         loginMutation.mutate(values, {
             onSuccess: (data) => {
                 dispatch(setUser({ token: data.data }));
-                navigate('/app/dashboard');
+                navigate('/app/home');
             },
             onError: (error) => {
                 console.log("Login failed", error);

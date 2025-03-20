@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import { items } from "./sider-router";
 import { HeaderLayout } from "./header/header";
 import { FooterLayout } from "./footer/footer";
@@ -7,7 +7,6 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { BreadcrumbComponent } from "./breadcrumbComponent";
 import styles from './mainLayout.module.css'
 import { loadState } from "../config/storage";
-import { UserAddOutlined } from "@ant-design/icons";
 const { Content, Sider } = Layout;
 
 export const MainLayout = () => {
@@ -41,11 +40,11 @@ export const MainLayout = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className={styles.sitelogo}>
-          <Link to={'/app/dashboard'} className="logo">Savdo</Link>
+          <Link to={'/app/home'} className="logo">Savdo</Link>
         </div>
         <Menu
           theme="dark"
-          defaultSelectedKeys={["/app/dashboard"]}
+          defaultSelectedKeys={["/app/home"]}
           items={menu}
           onClick={handleMenuClick}
           style={{ paddingTop: 24 }}

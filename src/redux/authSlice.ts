@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { removeState, saveState } from "../config/storage";
+import { removeState } from "../config/storage";
 
 export interface AuthState {
     user: null | { token: string };

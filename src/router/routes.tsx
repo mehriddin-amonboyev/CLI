@@ -3,11 +3,11 @@ import { CreateDebts } from "../pages/Debts/debts";
 import { CreateDebtor } from "../pages/Filed/createDebtor";
 import { Home } from "../pages/Home/home";
 import { Profile } from "../pages/Profile/profile";
-import { Statistika } from "../pages/Statistic/statistic";
+// import { Statistika } from "../pages/Statistic/statistic";
 
 export default [
     {
-        path: '/app/dashboard',
+        path: '/app/home',
         comp: Home,
     },
     {

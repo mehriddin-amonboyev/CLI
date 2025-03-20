@@ -7,7 +7,7 @@ export const FooterLayout = () => {
   return (
     <Footer style={{
       maxWidth: 800,
-      maxHeight: 200,
+      maxHeight: 100,
       textAlign: 'center'
     }}>
       Taklif va shikoyatlar uchun

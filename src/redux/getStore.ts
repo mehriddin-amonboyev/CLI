@@ -7,11 +7,12 @@ export const getUserData = () => {
         return null;
     }
 
-    request.get('/stores/', {
-        headers: {
-            Authorization: `Bearer ${token}` // Tokenni headerga qo'shish
-        }
-    })
+    request
+        .get('/stores/', {
+            headers: {
+                Authorization: `Bearer ${token}` // Tokenni headerga qo'shish
+            }
+        })
         .then(response => {
             const userData = response.data;
             localStorage.setItem("user", userData)
